@@ -25,12 +25,12 @@ EOF
 }
 
 prerequisites() {
-  for cmd in cowsay fortune nc; do
-    if ! command -v "$cmd" >/dev/null 2>&1; then
-      echo "Missing prerequisite: $cmd"
-      exit 1
-    fi
-  done
+    command -v cowsay >/dev/null 2>&1 && \
+    command -v fortune >/dev/null 2>&1 && \
+    command -v nc >/dev/null 2>&1 || {
+        echo "Install prerequisites."
+        exit 1
+    }
 }
 
 
